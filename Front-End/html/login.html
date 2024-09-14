@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="/js/login.js"></script>
+    <title>LOGIN</title>
+
+    <!-- Padronizações -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+
+                    colors: {
+                        principalazul: '#0174DE'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    },
+                    fontWeight: {
+                        'medium': 500,
+                        'semi-bold': 600,
+                        'bold': 700
+                    }
+
+                }
+            }
+        }
+    </script>
+
+
+
+</head>
+
+<body class="
+flex">
+
+    <img src="/img/doutor-login.png" alt="" class="relative w-5/12 h-screen flex">
+
+
+    <div class="absolute left-0 top-0">
+        <img src="/img/image 48.png" alt="" class="">
+    </div>
+
+
+
+
+    <div id="telaDireita" class="">
+
+        <div class="pl-96 ml-96 ">
+            <img src="/img/lateral -login.png" alt="" class="w-full relative">
+        </div>
+
+        <div class=" absolute ml-64 mt-[-90px]">
+            <div class="">
+                <h1 class="font-poppins text-5xl font-bold text-principalazul mb-5 ">Entrar no VITAL+</h1>
+            </div>
+
+            <div class="flex">
+                <p class="font-poppins text-xl text-stone-400">Não possui conta?</p>
+                <button class="text-xl font-poppins text-principalazul ml-2 font-medium">Cadastrar
+                    <a href="/cadastro.html"></a>
+                </button>
+            </div>
+        </div>
+
+        <!-- Campo para inserir email -->
+        <div class="mt-[80px] ml-72">
+            <label for="email" class="block text-stone-500 text-xl font-poppins mb-2">Email</label>
+            <div class="relative w-3/5">
+                <input type="email" placeholder="email@gmail.com" id="email"
+                    class="font-poppins shadow-2xl h-16 border border-gray-300 rounded-lg pl-6 pr-16 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                <img src="/img/email-icone.png" alt="Ícone de email"
+                    class="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6">
+            </div>
+        </div>
+
+        <!-- Campo para inserir senha -->
+        <div class="mt-6 ml-72">
+            <label for="password" class="block text-stone-500 text-xl font-poppins mb-2">Senha</label>
+            <div class="relative w-3/5">
+                <input type="password" placeholder="*********" id="senha"
+                    class="font-poppins shadow-2xl h-16 border border-gray-300 rounded-lg pl-6 pr-16 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                    <img src="/img/senha-icone.png" alt="Ícone de Senha"
+                    class="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 cursor-pointer" id="toggleSenha">
+                </div>
+        </div>
+
+
+
+        <div class="mt-8 ml-72">
+            <!-- Esqueceu sua seha? -->
+            <p class="font-poppins  text-stone-400">Esqueceu a senha?</p>
+
+        </div>
+
+
+
+        <button id="entrar"
+    class="font-bold font-poppins bg-principalazul text-white rounded-full w-[420px] h-[72px] flex items-center justify-center hover:bg-blue-600 ml-80 mt-20 text-xl">
+    Entrar
+</button>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

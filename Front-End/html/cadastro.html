@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script type="module" src="../js/cadastro.js" defer></script>
+   <title>Cadastro</title>
+</head>
+<body class="bg-blue-200 flex">
+  
+   <div>
+       <img src="/img/image 48.png" alt="" class="ml-5 mt-1">
+   </div>
+
+   <img src="/img/doutora-cadastro.png" alt="" class="w-2/5 h-full mt-20">
+
+   <div class="ml-32 mt-20">
+       <div>
+           <p class="font-sans font-bold text-sky-700 text-3xl">REALIZE SEU</p>
+           <h1 class="font-sans text-4xl font-bold text-stone-600 text-6xl mt-4">CADASTRO</h1>
+           <div class="flex mt-4">
+               <p class="text-stone-400 font-sans text-xl">possui conta?</p>
+               <button class="font-sans text-sky-600 ml-2 text-xl">Entre</button>
+           </div>
+       </div>
+
+       <div class="flex mt-10">
+           <div>
+               <label for="name" class="block text-stone-500 text-base font-sans mb-2 text-xl">Nome</label>
+               <input type="name" id="nome" placeholder="Nome completo" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">  
+               <img src="/img/people-cadastro.png" alt="" class="ml-60 mt-[-37px]">
+           </div>
+           <div class="ml-24">
+               <label for="phone" class="block text-stone-500 text-base font-sans mb-2 text-xl">Telefone</label>
+               <input type="phone" id="telefone" placeholder="(11)1234-5678" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+               <img src="/img/phone-cadastro.png" alt="" class="ml-60 mt-[-37px]">
+           </div>
+       </div>
+
+       <div class="mt-6">
+           <label for="email" class="block text-stone-500 text-base font-sans mb-2 text-xl">Email</label>
+           <input type="email" id="email" placeholder="seu@email.com" class="shadow-2xl w-full h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           <img src="/img/email-icone.png" alt="" class="ml-96 pl-60 mt-[-37px]">
+       </div>
+
+       <div class="flex mt-6">
+           <div>
+               <label for="password" class="block text-stone-500 text-base font-sans mb-2 text-xl">Senha</label>
+               <div class="relative">
+                   <input type="password" id="senha" placeholder="**********" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                   <img id="toggleSenha" src="/img/senha-icone.png" alt="Mostrar senha" class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
+               </div>
+               <img src="/img/senha-icone.png" alt="" class="ml-60 mt-[-37px]">
+           </div>
+           <div class="ml-24">
+               <label for="date" class="block text-stone-500 text-base font-sans mb-2 text-xl">Data de Nascimento</label>
+               <input type="date" id="date" class="shadow-2xl w-72 h-16 border text-stone-400 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+       </div>
+
+       <div class="flex mt-6">
+           <div>
+               <label for="sexo" class="block text-stone-500 font-sans mb-2 text-xl">Sexo</label>
+               <div class="flex items-center">
+                   <input type="radio" id="masculino" name="sexo" value="masculino" class="mr-2">
+                   <label for="masculino" class="text-stone-500 text-xl mr-4">Masculino</label>
+                   <input type="radio" id="feminino" name="sexo" value="feminino" class="mr-2">
+                   <label for="feminino" class="text-stone-500 text-xl">Feminino</label>
+               </div>
+           </div>
+           <div class="ml-40">
+               <label for="cpf" class="block text-stone-500 font-sans mb-2 text-xl">CPF</label>
+               <input type="number" id="cpf" placeholder="123.456.789.10" class="shadow-2xl  w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+       </div>
+
+       <div class="flex mt-6">
+           <div>
+               <label for="cep" class="block text-stone-500 font-sans mb-2 text-xl">CEP</label>
+               <input type="text" id="cep" placeholder="00000-000" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+           <div class="ml-24">
+               <label for="logradouro" class="block text-stone-500 font-sans mb-2 text-xl">Logradouro</label>
+               <input type="text" id="logradouro" placeholder="Rua Exemplo" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+       </div>
+
+       <div class="flex mt-6">
+           <div>
+               <label for="cidade" class="block text-stone-500 font-sans mb-2 text-xl">Cidade</label>
+               <input type="text" id="cidade" placeholder="Cidade" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+           <div class="ml-24">
+               <label for="estado" class="block text-stone-500 font-sans mb-2 text-xl">Estado</label>
+               <input type="text" id="estado" placeholder="Estado" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+       </div>
+
+       <div class="flex mt-6">
+           <div>
+               <label for="numero" class="block text-stone-500 font-sans mb-2 text-xl">Número</label>
+               <input type="text" id="numero" placeholder="Número" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+           <div class="ml-24">
+               <label for="complemento" class="block text-stone-500 font-sans mb-2 text-xl">Complemento</label>
+               <input type="text" id="complemento" placeholder="Complemento" class="shadow-2xl w-72 h-16 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+           </div>
+       </div>
+
+       <button id="cadastro" class="bg-sky-400 text-white text-xl rounded-full w-72 h-12 flex items-center justify-center hover:bg-blue-600 ml-48 mt-16">PRÓXIMO</button>
+   </div>
+</body>
+</html>
