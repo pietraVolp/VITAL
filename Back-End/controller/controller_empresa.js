@@ -72,10 +72,99 @@ const setInserir = async function(dadosEmpresa, contentType){
 }
 
 
-const setAtualizar = async function(){}
+const setAtualizar = async function(id, dadoAtualizado, contentType){
+    try{
+
+        let idEmpresa = id
+
+        // console.log(dadoAtualizado);
+        // Validação de content-type (apenas aplication/json)
+        if(String(contentType).toLowerCase() == 'application/json'){
+            let dadosID = empresaDAO.ListById(idEmpresa)
+
+            
+            if(idEmpresa == '' || idEmpresa == undefined || idEmpresa == isNaN(idEmpresa) || idEmpresa == null){
+                return message.ERROR_INVALID_ID
+                
+            }else if(idEmpresa>dadosID.length){
+                return message.ERROR_NOT_FOUND
+            }else{
+                // Cria o objeto JSON para devolver os dados criados na requisição
+                let atualizarJSON = {}
+                
+                    //Validação de campos obrigatórios ou com digitação inválida
+                    if(dadoAtualizado.nome_empresa == ''    || dadoAtualizado.nome_empresa == undefined       ||  dadoAtualizado.nome_empresa == null               || dadoAtualizado.nome_empresa.length > 100 ||
+                    dadoAtualizado.nome == ''  ||   dadoAtualizado.nome == undefined  || dadoAtualizado.nome == null   || dadoAtualizado.nome.length > 100 ||
+                    dadoAtualizado.nome_proprietario == '' ||  dadoAtualizado.nome_proprietario == undefined || dadoAtualizado.nome_proprietario == null  || dadoAtualizado.nome_proprietario.length > 100 ||
+                    dadoAtualizado.email == '' ||  dadoAtualizado.email == undefined || dadoAtualizado.email == null  || dadoAtualizado.email.length > 255 ||
+                    dadoAtualizado.senha == '' ||  dadoAtualizado.senha == undefined || dadoAtualizado.senha == null  || dadoAtualizado.senha.length > 18 ||
+                    dadoAtualizado.cnpj == '' ||  dadoAtualizado.cnpj == undefined || dadoAtualizado.cnpj == null  || dadoAtualizado.cnpj.length > 320 ||
+                    dadoAtualizado.telefone == '' ||  dadoAtualizado.telefone == undefined || dadoAtualizado.telefone == null  || dadoAtualizado.telefone.length > 30 ||
+                    dadoAtualizado.telefone_clinica == '' ||  dadoAtualizado.telefone_clinica == undefined || dadoAtualizado.telefone_clinica == null  || dadoAtualizado.telefone_clinica.length > 30 
+     ){
+                        return message.ERROR_REQUIRED_FIELDS
+                    }
+                
+                    else{
+
+                       
+                        
+                            // Encaminha os dados do filme para o DAO inserir no DB
+                            let dadosEmpresa = await empresaDAO.update(dadoAtualizado, idEmpresa)
+                
+                            // Validação para verificar se o DAO inseriu os dados do DB
+                        
+                            if(dadosEmpresa){
+                    
+                                //Cria o JSON de retorno dos dados (201)
+                                atualizarJSON.empresa      = dadosEmpresa
+                                atualizarJSON.status      = message.SUCCESS_UPDATED_ITEM.status
+                                atualizarJSON.status_code = message.SUCCESS_UPDATED_ITEM.status_code
+                                atualizarJSON.message     = message.SUCCESS_UPDATED_ITEM.message
+                                return atualizarJSON //201
+                                
+                            }else{
+                                return message.ERROR_INTERNAL_SERVER_DB //500
+                            }
+                        
+                
+                    }
+                    
+                }
+            }else{
+                return message.ERROR_CONTENT_TYPE //415
+            }
 
 
-const setDeletar = async function(){}
+        }catch(error){
+            console.log(error)
+        return message.ERROR_INTERNAL_SERVER //500 - erro na controller
+    }
+}
+
+
+const setDeletar = async function(id){
+    try {
+        let idEmpresa = id
+    
+        if(idEmpresa == '' || idEmpresa == undefined || idEmpresa == isNaN(idEmpresa) || idEmpresa == null){
+            return message.ERROR_INVALID_ID
+        }else{        
+
+            let dadosEmpresa = await empresaDAO.deletar(idEmpresa)
+    
+        
+            if(dadosEmpresa){
+              return  message.SUCCESS_DELETED_ITEM
+            }else{
+                return message.ERROR_NOT_FOUND
+            }
+        }
+    } catch (error) {
+        console.log(error)
+        return message.ERROR_INTERNAL_SERVER
+    }
+}
 
 
 const setListar = async function(){
@@ -118,7 +207,48 @@ const setListar = async function(){
 }
 
 
-const setListarPorId = async function(){}
+const setListarPorId = async function(id){
+    try {
+        // Recebe o id do filme
+     
+    let idEmpresa = id
+
+    //Cria o objeto JSON
+    let JSON = {}
+
+
+    //Validação para verificar se o id é válido(Vazio, indefinido e não numérico)
+    if(idEmpresa == '' || idEmpresa == undefined || isNaN(idEmpresa)){
+        return message.ERROR_INVALID_ID // 400
+    }else{
+
+        //Encaminha para o DAO localizar o id do filme 
+        let dadosEmpresa = await empresaDAO.ListById(idEmpresa)
+
+        // Validação para verificar se existem dados de retorno
+        if(dadosEmpresa){
+
+            // Validação para verificar a quantidade de itens encontrados.
+            if(dadosEmpresa.length > 0){
+                //Criar o JSON de retorno
+                JSON.empresa = dadosEmpresa
+                JSON.status_code = 200
+    
+                
+                return JSON
+            }else{
+                return message.ERROR_NOT_FOUND // 404
+            }
+
+        }else{
+            return message.ERROR_INTERNAL_SERVER_DB // 500
+        }
+    }
+   } catch (error) {
+       console.log(error)
+       return message.ERROR_INTERNAL_SERVER_DB
+   }
+}
 
 
 module.exports = {

@@ -161,6 +161,41 @@ const bodyParserJSON = bodyParser.json()
         }
     });
 
+    app.get('/v1/vital/empresa/:id', cors(), async function(request,response,next){
+
+        // recebe o id da requisição
+        let idEmpresa = request.params.id
+    
+        //encaminha o id para a acontroller buscar o filme
+        let dadosEmpresa = await controllerEmpresa.setListarPorId(idEmpresa)
+    
+        response.status(dadosEmpresa.status_code);
+        response.json(dadosEmpresa);
+    })
+
+    app.delete('/v1/vital/empresa/:id', cors (), async function (request,response,next){
+
+        let idEmpresa = request.params.id
+    
+        let dadosEmpresa = await controllerEmpresa.setDeletar(idEmpresa);
+    
+        response.status(dadosEmpresa.status_code);
+        response.json(dadosEmpresa)
+    })
+
+    app.put('/v1/vital/empresaAtualizar/:id', cors(), bodyParserJSON, async function(request,response,next){
+
+        let idEmpresa = request.params.id
+        let contentType = request.headers['content-type'];
+        let dadosBody = request.body
+    
+        let resultUptadeEmpresa = await controllerEmpresa.setAtualizar(idEmpresa, dadosBody, contentType)
+    
+        response.status(resultUptadeEmpresa.status_code)
+        response.json(resultUptadeEmpresa)
+    
+    })
+
 
 
 
