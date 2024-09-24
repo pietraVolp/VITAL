@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleSenha.addEventListener('click', () => {
     if (senha.type === 'password') {
       senha.type = 'text'
-      toggleSenha.src = '/img/senha-icone.png' // Mude para o ícone de olho aberto
+      toggleSenha.src = '/Front-End/img/olhoAberto.png' // Mude para o ícone de olho aberto
     } else {
       senha.type = 'password'
-      toggleSenha.src = '/img/senha-icone.png' // Mude para o ícone de olho fechado
+      toggleSenha.src = '/Front-End/img/olhoFechado.png' // Mude para o ícone de olho fechado
     }
   })
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        const response = await fetch('http://localhost:8080/v1/vital/usuario', {
+        const response = await fetch('http://vital-umqy.onrender.com/v1/vital/usuario', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
